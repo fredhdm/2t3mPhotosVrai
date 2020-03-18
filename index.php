@@ -3,7 +3,7 @@ include( $_SERVER[ 'DOCUMENT_ROOT' ] . '/includes/parametres.php' );
 
 
 //*****Contenu dynamique de la page*****//
-$titrePage = 'Photographe portrait corporatif, immobilier, culinaire et hôtel à Lévis - Québec / HD Marketing';
+$titrePage = 'Photographe portrait corporatif, immobilier, culinaire et hôtel à Lévis et Québec / HD Marketing';
 $descriptionPage = 'Photographe professionnel passionné depuis plus de ' . ( date( "Y" ) - 2003 ) . ' ans, laissez-moi créer les images dignes de vos exigences et de vos besoins. Ferez-vous partie de ces centaines de clients satisfaits de mes services en photographie?';
 
 ?>

@@ -11,7 +11,7 @@
     <div class="top">
         <div class="topNav">
             <div class="link">
-                <!--a href="/fr/photographe">Le photographe</a-->
+                <a href="/fr/photographe">Le photographe</a>
                 <a href="/fr/contact-photographe-quebec-levis">Contactez-nous</a>
                 <a href="tel:14186679122">418-667-9122</a>
             </div>

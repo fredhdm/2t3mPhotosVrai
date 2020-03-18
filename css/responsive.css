@@ -1,0 +1,331 @@
+@charset "UTF-8";
+@media only screen and (max-width: 1280px) {
+ /*-------- Global --------*/
+h1 {
+    font-size: 30px;
+    
+}
+.cover {
+   
+    height: 450px;
+   
+}
+
+    .topNav {
+        width: 90%;
+       
+    }
+    /*-------- Nav --------*/
+    .nav {
+        width: 90%;
+      
+    }
+
+    .nav .menu ul li {
+    
+    padding-left: 20px;
+}
+
+
+
+
+.bigPicture { 
+  
+    height: 450px;  
+}
+
+.pageLabel {
+        width: 90%;
+        
+    }
+    
+    /*-------- Content --------*/
+    
+    .content {
+        width: 90%;
+       
+    }
+    /*-------- Footer --------*/
+    .footer {
+        width: 90%;
+       
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+   
+
+ /*-------- Global --------*/
+h1 {
+    font-size: 25px;
+    margin-top: 25px;
+}
+   
+.nav {   
+   
+    height: auto;
+    display: block;
+    text-align:center;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.nav > div {
+    display: block;
+    width:100%;
+    
+}
+.nav .logo img {   
+    max-width: 250px;
+}
+.nav .menu {
+    text-align: center;
+    width: 100%;
+    margin-top:30px;
+}
+
+.nav .menu ul li {
+    text-align:center;    
+}
+
+
+.bigPicture { 
+  
+    height: 350px;  
+}
+
+.forfaitContainer {
+    width: 80%;
+    
+}
+
+}
+
+
+@media only screen and (max-width: 768px) {
+
+ /*-------- Global --------*/
+h1 {
+    font-size: 20px;
+    
+}
+
+.top {  
+   
+    text-align: center;   
+}
+
+.topNav .link a:first-child {
+   display:none;
+}
+
+.topNav .link a:nth-child(2) {
+    padding-left: 0;
+}
+
+.topNav .social  {
+    display:none;
+}
+
+
+/*-------- Nav --------*/
+    
+    
+    
+     label {
+        display: inline-block;
+        cursor: pointer;
+        /* position: absolute; */
+        right: 0;
+    }
+    .menu ul {       
+        display: none !important;
+    }
+    
+    #toggle:checked +  ul {
+        display: block !important;
+        width: 100%;
+    }
+   
+   nav {
+       text-align:right;
+   } 
+.nav {
+   position:relative;
+   /* height: 145px; */
+   display: table;
+}
+.nav > div {
+    display: table-cell;
+    width:initial;
+    /* vertical-align: top; */
+}
+
+.nav .logo {
+   padding-left:26px
+}
+
+.nav .menu {
+    text-align: right;
+    width: 26px;
+}
+.nav .menu ul {
+    list-style: none;
+    /* display: inline-block; */
+    position: absolute;
+    /* bottom: 0; */
+    z-index: 20;
+    left: 0;
+    right: 0;
+    background-color: #F37322;
+}
+.nav .menu ul li {
+    display: block;
+    padding-left: 0;
+    width: 100%;
+    padding: 20px 0;
+    border-top: 1px solid white;
+    /* border-bottom: 1px solid white; */
+}
+.nav .menu ul li:first-child {
+    padding-left: 0;
+    /* padding: 20px 0; */
+}
+.nav .menu a {
+    color: white;
+    padding:5px;
+}
+
+.nav .menu a.active {
+    background-color: #F37322;
+    color:white;
+}
+
+.nav .menu a:hover {
+    color: black;
+}
+
+.nav .menu a.active:hover {
+    color: white;
+}
+
+
+
+.bigPicture { 
+  
+    height: 250px;  
+}
+
+.content{
+      margin-top: 35px;
+}
+
+.content > div {
+    display: block;
+    width: 100%;   
+   
+}
+
+.colonneUn {
+    margin-right:0;
+}
+
+/*-------- Mosaique --------*/
+
+
+
+.cover {
+  
+    height: 325px;   
+    width: 100%;
+    display: inline-table;
+    margin-right: 0;
+    margin-bottom: 20px;     
+}
+
+.portfolio .cover {
+   height:250px; 
+}
+
+.traitementDeStar {
+    margin:0 0 35px 0;
+}
+
+.traitementDeStar .cover {  
+    height: 125px;   
+    
+}
+
+
+.colonneDeux.logos {
+    text-align: center;
+}
+
+.colonneDeux.logos img {
+    width:100%;
+    max-width:250px;
+}
+
+
+
+/*-------- TRAITEMENT DE STAR --------*/
+.bleuPoudre {
+    background-position:top;
+}
+
+
+.forfaitContainer {
+    width: 90%;
+   
+}
+
+.forfaitContainer > div {
+    width: 75%;
+    margin: 0 auto !important;
+    display: block;
+}
+
+
+
+
+}
+
+
+@media only screen and (max-width: 500px) {
+
+.traitementDeStar .cover {  
+    height: 75px;   
+    
+}
+
+    
+    /*-------- Footer --------*/
+footer {    
+    height: auto;
+    padding:20px 0
+}
+.footer {   
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+}
+.footer > div {
+    display: block;
+    width: 100%;
+    text-align:center;
+
+    
+}
+.footer .copyright {
+    font-weight: 300;
+}
+.footer .social {
+    text-align: center;
+}
+.footer .social a {
+    padding:0 10px;
+    display:inline-block;
+    
+}
+
+}

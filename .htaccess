@@ -1,0 +1,371 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+#BLOCK ACCESS
+RewriteCond %{HTTP_REFERER} dnsrsearch\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} urlopener\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} searches\.omiga\-plus\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} search\.genieo\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} semalt\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} semalt\.semalt\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} buttons\-for\-website\.ca [NC]
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule .* - [F]
+
+RewriteCond %{HTTP_HOST} ^2t3mphotos.ca$ [OR]
+RewriteCond %{HTTP_HOST} ^www.2t3mphotos.ca$
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule (.*)$ https://www.2t3mphotos.com/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www.golesfilles.com$
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule (.*)$ http://www.golesfilles.com [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www.photo-maternite.com$
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule (.*)$ https://www.2t3mphotos.com/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www.dev.2t3mphotos.com$
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule (.*)$ https://www.2t3mphotos.com/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^2t3mphoto.ca$ [OR]
+RewriteCond %{HTTP_HOST} ^www.2t3mphoto.ca$
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule (.*)$ https://www.2t3mphotos.com/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^2t3mphoto.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www.2t3mphoto.com$
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule (.*)$ https://www.2t3mphotos.com/$1 [R=301,L]
+
+#RewriteCond %{HTTP_HOST} !^2t3mPhotos\.com$ [NC]
+#RewriteRule ^(.*)$ https://www.2t3mphotos.com/$1 [R=301,L]
+
+RewriteCond %{THE_REQUEST} ^.*/index\.php 
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(.*)index.php$ /fr/$1 [R=301,L] 
+
+#REMETTRE Obliger les www.
+
+#REMETTRE
+# First rewrite to HTTPS:
+# Don't put www. here. If it is already there it will be included, if not
+# the subsequent rule will catch it.
+RewriteCond %{HTTPS} off
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Now, rewrite any request to the wrong domain to use www.
+
+#rediriger les sous répertoires vers le vrai site.
+#Accueil
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^fr$ index.php [L,QSA]
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^en$ index-en.php [L,QSA]
+
+#ÉVITER QUE LA PAGE PHP RÉELLE FONCTIONNE, SI OUI, ELLE REDIRIGE VERS LE REWRITE.
+RewriteCond %{THE_REQUEST} \s/+photographe-maternite\.php[?/\s] [NC]
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^ /fr/photographe/maternite [R=301,L]
+
+#Récriture des répertoires (5)
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^fr/([^\.]+)/([^\.]+)/([^\.]+)/([^\.]+)/([^\.]+)$ /$1-$2-$3-$4-$5.php [NC,L]
+
+#Récriture des répertoires (4)
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^fr/([^\.]+)/([^\.]+)/([^\.]+)/([^\.]+)$ /$1-$2-$3-$4.php [NC,L]
+
+#Récriture des répertoires (3)
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^fr/([^\.]+)/([^\.]+)/([^\.]+)$ /$1-$2-$3.php [NC,L]
+
+#Récriture des répertoires (2)
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^fr/([^\.]+)/([^\.]+)$ /$1-$2.php [NC,L]
+
+#Retirer l'extension du URL
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^fr/([^\.]+)$ $1.php [NC,L]
+
+#Récriture des répertoires (5)
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^en/([^\.]+)/([^\.]+)/([^\.]+)/([^\.]+)/([^\.]+)$ /$1-$2-$3-$4-$5.php [NC,L]
+
+#Récriture des répertoires (4)
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^en/([^\.]+)/([^\.]+)/([^\.]+)/([^\.]+)$ /$1-$2-$3-$4.php [NC,L]
+
+#Récriture des répertoires (3)
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^en/([^\.]+)/([^\.]+)/([^\.]+)$ /$1-$2-$3.php [NC,L]
+
+#Récriture des répertoires (2)
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^en/([^\.]+)/([^\.]+)$ /$1-$2.php [NC,L]
+
+#Retirer l'extension du URL
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^en/([^\.]+)$ $1.php [NC,L]
+
+#21 septembre 2014
+Redirect 301 /photographies-de-maternite.php https://www.2t3mphotos.com/fr/photographe/maternite
+Redirect 301 /photographies-corporatives.php https://www.2t3mphotos.com/fr/photographe/corporatif
+Redirect 301 /photographies-de-famille.php https://www.2t3mphotos.com/fr/photographe/famille
+Redirect 301 /photographies-divers.php https://www.2t3mphotos.com/fr/photographe/portrait
+#Redirect 301 /photographe-corporatif.php https://www.2t3mphotos.com/fr/photographe/portrait-corporatif
+Redirect 301 /publications https://www.2t3mphotos.com/fr/
+Redirect 301 /photographe-portrait.php https://www.2t3mphotos.com/fr/photographe/portrait-corporatif
+Redirect 301 /studio-photographe-rive-sud-contact https://www.2t3mphotos.com/fr/contact/photographe/rive-sud
+Redirect 301 /contact/photographe/rive-sud https://www.2t3mphotos.com/fr/contact/photographe/quebec/levis/saint-nicolas
+Redirect 301 /studio-photographe-rive-sud-contact.php https://www.2t3mphotos.com/fr/contact/photographe/quebec/levis/saint-nicolas
+Redirect 301 /fb-derniere-photo.php https://www.2t3mphotos.com
+Redirect 301 /pictures-dreamteam-calendrier-choi-radio-x-2007-9-62-34-en-en.php https://www.2t3mphotos.com
+Redirect 301 /activites-populaires_p_1.php https://www.2t3mphotos.com
+Redirect 301 /pictures-anny-carrier-expo-quebec-6-29-3-en.php https://www.2t3mphotos.com
+Redirect 301 /photographe/portrait/corporatif https://www.2t3mphotos.com/fr/photographe/portrait-corporatif
+Redirect 301 /forfaits/fete/enfants https://www.2t3mphotos.com/fr/forfaits/fete-filles
+#Redirect 301 /fr/forfaits/fete/enfants/stars https://www.2t3mphotos.com/fr/forfaits/fete-filles/traitement-stars
+Redirect 301 /forfaits/fete-enfants/traitement-stars https://www.2t3mphotos.com/fr/photographe/anniversaire-pour-filles
+Redirect 301 /forfaits/miniseance/chutesdelachaudiere https://www.2t3mphotos.com/fr/forfaits/mini-seances/chutes-de-la-chaudiere
+Redirect 301 /forfaits/filles/traitement/star https://www.2t3mphotos.com/fr/forfaits/filles/traitement-stars
+Redirect 301 /forfaits/adolescentes/traitement/vip https://www.2t3mphotos.com/fr/forfaits/adolescentes/traitement-vip
+Redirect 301 /forfaits/femmes/traitement/vip https://www.2t3mphotos.com/fr/forfaits/femmes/traitement-vip
+Redirect 301 /certificats-cadeaux/photographe https://www.2t3mphotos.com/fr/photographe/certificats-cadeaux
+Redirect 301 /forfaits/fete-enfants/stars https://www.2t3mphotos.com/fr/forfaits/filles/traitement-stars
+Redirect 301 /forfaits/fete-filles/stars https://www.2t3mphotos.com/fr/forfaits/fete-filles/traitement-stars
+Redirect 301 /forfaits/fete-filles/educazoo https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits/fete-filles/maquillage https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits/fete-filles/bricolage https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /fr/forfaits/filles/traitement-stars https://www.2t3mphotos.com/fr/forfaits/fete-filles/traitement-stars
+Redirect 301 /pictures-dreamteam-calendrier-choi-radio-x-2007-9-62-53-en.php https://www.2t3mphotos.com/en
+Redirect 301 /pictures-lancement-calendrier-dreamteam-2009-palladium-9-104-4-en-en.php https://www.2t3mphotos.com/en
+Redirect 301 /album-photo-photographie-de-charme-modele-un-9-46.php https://www.2t3mphotos.com/fr
+Redirect 301 /pictures-photographies-de-famille-un-13-105-10-en-en.php https://www.2t3mphotos.com/en
+Redirect 301 /photos-maman-est-chez-le-coiffeur-1-83-7-en.php https://www.2t3mphotos.com/fr
+Redirect 301 /album-photo-portrait-femme-13-112.php https://www.2t3mphotos.com/fr
+Redirect 301 /pictures-incendie-beauport-15-6-3-en-en.php https://www.2t3mphotos.com/en
+Redirect 301 /album-photo-a-vos-marques-party-7-34.php https://www.2t3mphotos.com/fr
+Redirect 301 /fr/pose-ongles-levis https://www.2t3mphotos.com/fr/soins-ongles-levis
+Redirect 301 /fr/soins-ongles-levis https://www.ongles2t3m.com
+
+Redirect 301 /forfaits/fete/enfants/educazoo https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits/fete/enfants/stars https://www.2t3mphotos.com/fr/forfaits/fete-filles/traitement-stars
+#Redirect 301 /fr/forfaits/fete-filles https://www.2t3mphotos.com/fr/forfaits/fete-filles/traitement-stars
+Redirect 301 /forfaits/fete/enfants/maquillage https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits/fete/enfants/princesse https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /photographe/corporatif/promotion https://www.2t3mphotos.com/fr/photographe/portrait-corporatif
+Redirect 301 /fr/forfaits/fete/enfants https://www.2t3mphotos.com/fr/forfaits/fete-filles
+
+#Redirect 301 /fr/forfaits/filles https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits/filles/traitement/princesse https://www.2t3mphotos.com/fr/forfaits/filles
+Redirect 301 /forfaits-fete-enfants-crackpotcafe.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits-fete-filles-crackpotcafe.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits-fete-filles-crackpotcafe.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /emplois/photographe https://www.2t3mphotos.com/fr
+Redirect 301 /emplois/estheticienne https://www.2t3mphotos.com/fr
+Redirect 301 /emplois/maquilleuse https://www.2t3mphotos.com/fr
+Redirect 301 /forfaits-fete-filles-bricolage.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits/fete/enfants/yoga https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits-fete-filles-maquillage.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /emplois https://www.2t3mphotos.com/fr
+
+Redirect 301 /photographe/famille https://www.2t3mphotos.com/fr/photographe/famille
+Redirect 301 /photographe/maternite https://www.2t3mphotos.com/fr/photographe/maternite
+Redirect 301 /photographe/portrait-corporatif https://www.2t3mphotos.com/fr/photographe/portrait-corporatif
+Redirect 301 /photographe/commercial https://www.2t3mphotos.com/fr/photographe/commercial
+Redirect 301 /forfaits/fete-filles https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits-fete-filles-creation-bijoux.php https://www.2t3mphotos.com/fr/forfaits/fete-filles/traitement-stars
+Redirect 301 /forfaits https://www.2t3mphotos.com/fr/forfaits
+Redirect 301 /forfaits/mini-seances https://www.2t3mphotos.com/fr/forfaits/mini-seances
+Redirect 301 /forfaits/filles https://www.2t3mphotos.com/fr/forfaits/filles
+Redirect 301 /forfaits/adolescentes https://www.2t3mphotos.com/fr/forfaits/adolescentes
+Redirect 301 /forfaits/femmes https://www.2t3mphotos.com/fr/forfaits/femmes
+Redirect 301 /photographe/certificats-cadeaux https://www.2t3mphotos.com/fr/photographe/certificats-cadeaux
+Redirect 301 /photographe/tarifs https://www.2t3mphotos.com/fr/photographe/tarifs
+Redirect 301 /contact/photographe/quebec/levis/saint-nicolas https://www.2t3mphotos.com/fr/contact-photographe-quebec-levis
+Redirect 301 /forfaits/filles/traitement-stars https://www.2t3mphotos.com/fr/forfaits/filles/traitement-stars
+Redirect 301 /forfaits/femmes/traitement-vip https://www.2t3mphotos.com/fr/forfaits/femmes/traitement-vip
+Redirect 301 /forfaits/adolescentes/traitement-vip https://www.2t3mphotos.com/fr/forfaits/adolescentes/traitement-vip
+Redirect 301 /forfaits/mini-seances/chutes-de-la-chaudiere https://www.2t3mphotos.com/fr/forfaits/mini-seances/chutes-de-la-chaudiere
+Redirect 301 /forfaits-fete-filles-educazoo.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits-fete-filles-prince.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits-fete-filles-stars.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits-fete-filles-yoga.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /forfaits-fete-filles-princesse.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /picture-category-sports-5-en.php https://www.2t3mphotos.com/fr
+Redirect 301 /produits_p_5_3.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /photos-lucie-laurier-nitro-7-33-2.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+Redirect 301 /picture-category-sports-5-en.php https://www.2t3mphotos.com/fr/forfaits/fete-filles
+
+Redirect 301 /photos-film-quebecois-cheech-7-42-8.php https://www.2t3mphotos.com/fr
+Redirect 301 /photos-dans-une-galaxie-pres-de-chez-vous-deux-7-82-3.php https://www.2t3mphotos.com/fr
+Redirect 301 /photos-lucie-laurier-nitro-7-33-8.php https://www.2t3mphotos.com/fr
+Redirect 301 /photos-dreamteam-calendrier-choi-radio-x-2007-9-62-60.php https://www.2t3mphotos.com/fr
+Redirect 301 /pictures-lady-mary-anne-10-eme-anniversaire-9-65-2-en.php https://www.2t3mphotos.com/en
+Redirect 301 /picture-category-kain-expo-quebec-6-en.php https://www.2t3mphotos.com/en
+Redirect 301 /coiffeuse.php https://www.2t3mphotos.com/fr
+
+Redirect 301 /portfolio https://www.2t3mphotos.com/fr
+Redirect 301 /photos-vtt-4-roues-quebec-5-8-10.php?categorie=5&album=8&photo=10 https://www.2t3mphotos.com/fr
+Redirect 301 /picture-category-nature-10-en.php?categorie=10&lng=english https://www.2t3mphotos.com/en
+Redirect 301 /album-photo-lady-mary-anne-reouverture-9-58.php?categorie=9&album=58 https://www.2t3mphotos.com/fr
+Redirect 301 /picture-album-gilles-parent-fm-93-14-60-en.php?categorie=14&album=60&lng=english https://www.2t3mphotos.com/en
+Redirect 301 /forfaits/fete-filles/bricolage https://www.2t3mphotos.com/fr
+Redirect 301 /album-photo-lady-mary-anne-10-eme-anniversaire-9-65.php https://www.2t3mphotos.com/fr
+Redirect 301 /photos-papillons-en-fete-jardin-hamel-serie-quatre-10-109-11.php?categorie=10&album=109&photo=11 https://www.2t3mphotos.com/fr
+Redirect 301 /album-photo-photos-charme-photographe-quebec-9-110.php?categorie=9&album=110 https://www.2t3mphotos.com/fr
+Redirect 301 /photos-creation-bijoux-joallier-robert-langlois-4-72-2.php?categorie=4&album=72&photo=2 https://www.2t3mphotos.com/fr
+Redirect 301 /photos-chateau-bonne-entente-1-113-6.php?categorie=1&album=113&photo=6 https://www.2t3mphotos.com/fr
+Redirect 301 /album-photo-a-vos-marques-party-7-34.php?categorie=7&album=34 https://www.2t3mphotos.com/fr
+
+#Shortcut
+#Redirect 301 /corporatif http://www.2t3mphotos.com/photographe-corporatif.php
+#Redirect 301 /maternite http://www.2t3mphotos.com/photographe-maternite.php
+#Redirect 301 /famille http://www.2t3mphotos.com/photographe-famille.php
+#Redirect 301 /publications http://www.2t3mphotos.com/publications.php
+#Redirect 301 /divers http://www.2t3mphotos.com/photographies-divers.php
+#Redirect 301 /portraits http://www.2t3mphotos.com/photographe-portrait.php
+Redirect 301 /fetes https://www.2t3mphotos.com/fr/forfaits/fete-enfants
+Redirect 301 /fete https://www.2t3mphotos.com/fr/forfaits/fete-enfants
+
+#Redirect 301 /photographe-maternite.php http://www.2t3mphotos.com/photographe-maternite
+#Redirect 301 /photographe-corporatif.php http://www.2t3mphotos.com/photographe-corporatif
+#Redirect 301 /photographe-famille.php http://www.2t3mphotos.com/photographe-famille
+#Redirect 301 /photographe-portrait.php http://www.2t3mphotos.com/photographe-portrait
+Redirect 301 /publications.php http://www.2t3mphotos.com/publications
+#Redirect 301 /studio-photographe-rive-sud-contact.php http://www.2t3mphotos.com/studio-photographe-rive-sud-contact
+
+Redirect 301 /photographe-maternite https://www.2t3mphotos.com/fr/photographe/maternite
+Redirect 301 /photographe-corporatif https://www.2t3mphotos.com/fr/photographe/corporatif
+Redirect 301 /photographe-famille https://www.2t3mphotos.com/fr/photographe/famille
+Redirect 301 /photographe-portrait https://www.2t3mphotos.com/fr/photographe/portrait
+Redirect 301 /forfaits/fete/enfants/princesse https://www.2t3mphotos.com/forfaits/fete-filles/traitement-stars
+Redirect 301 /photographe/interieur https://www.2t3mphotos.com/fr/photographe/commercial
+Redirect 301 /fr/photographe/certificats-cadeaux https://www.2t3mphotos.com/fr
+Redirect 301 /fr/forfaits/promotion-photo-levis https://www.2t3mphotos.com/fr
+Redirect 302 /fr/services/multimedia https://www.2t3mphotos.com/fr
+
+#2019
+Redirect 301 /fr/photographe/corporatif https://www.2t3mphotos.com/fr/photographe/portrait-corporatif
+Redirect 301 /fr/photographe/maternite https://www.2t3mphotos.com/fr/photographe/famille
+Redirect 301 /fr/forfaits/fete-filles/traitement-stars https://www.2t3mphotos.com/fr/photographe/anniversaire-pour-filles
+Redirect 301 /fr/forfaits https://www.2t3mphotos.com/fr/photographe/anniversaire-pour-filles
+Redirect 301 /fr/forfaits/adolescentes/traitement-vip https://www.2t3mphotos.com/fr/photographe/anniversaire-pour-filles
+Redirect 301 /fr/forfaits/femmes/traitement-vip https://www.2t3mphotos.com/fr/photographe/anniversaire-pour-filles
+Redirect 301 /fr/photographe/tarifs https://www.2t3mphotos.com/fr
+Redirect 301 /fr/photographe/evenementiel https://www.2t3mphotos.com/fr
+
+Redirect 301 /fr/photographe/commercial https://www.2t3mphotos.com/fr/photographe/portrait-corporatif
+
+
+
+#Page d'erreur
+ErrorDocument 404 https://www.2t3mphotos.com/fr/404
+	
+</IfModule>
+
+<IfModule mod_deflate.c>
+  # Compress HTML, CSS, JavaScript, Text, XML and fonts
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+  AddOutputFilterByType DEFLATE application/x-font
+  AddOutputFilterByType DEFLATE application/x-font-opentype
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE application/x-font-truetype
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE image/x-icon
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+
+  # Remove browser bugs (only needed for really old browsers)
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+  Header append Vary User-Agent
+</IfModule>
+<IfModule mod_expires.c>
+# Enable expirations
+ExpiresActive On
+# Default directive
+ExpiresDefault "access plus 1 month"
+# My favicon
+ExpiresByType image/x-icon "access plus 1 year"
+# Images
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+# CSS
+ExpiresByType text/css "access 1 month"
+# Javascript
+ExpiresByType application/javascript "access plus 1 year"
+</IfModule>

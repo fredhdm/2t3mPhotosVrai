@@ -1,0 +1,473 @@
+/*-------- Global --------*/
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 0;
+    vertical-align: baseline;
+    background: transparent;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+html {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+body {
+    width: 100%;
+    margin: auto;
+}
+a {
+    text-decoration: none;
+}
+strong {
+    font-weight: 700;
+}
+
+p {
+    margin-bottom:15px;
+}
+nav {
+    width:100%;
+}
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+    padding: 25px 50px;
+    border: 1px solid white;
+    background-color: rgba(243,115,34,0.25);
+    text-transform: uppercase;
+    text-align: right;
+    display: inline-block;
+    margin-top: 45px;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #F37322;
+    margin-bottom: 15px;
+}
+
+body.ts h2 {
+   color:#d6178b;
+}
+
+h3 {
+    font-size: 25px;
+    font-weight: 700;
+    color: #F37322;
+    margin-bottom: 15px;
+}
+
+.ts h3 {
+   
+   margin-bottom:0;
+   color:#d6178b;
+}
+
+body.ts .rose {
+    background-color:#d6178b;
+    color:white;
+    padding:10px;
+    border-radius:10px;
+}
+
+body.ts .rose h3 {
+    color:white;
+}
+
+.button {
+    text-align:center;
+}
+
+.button a{
+    display: inline-block;
+    /* height:100%; */
+    /* width:100%; */
+}
+
+
+.button img{
+    width:initial !important;
+}
+
+.hightlight {
+    font-size: 20px;
+    font-weight: 700;
+    color: #F37322;
+    margin-bottom: 30px;
+}
+.top {
+    width: 100%;
+    height: 60px;
+    background-color: #F37322;
+    color: white;
+    text-align: right;
+    vertical-align: middle;
+    display: inline-block;
+}
+.topNav {
+    width: 80%;
+    margin: auto;
+    height: 100%;
+}
+.topNav div {
+    display: inline-table;
+    vertical-align: middle;
+    height: 100%;
+}
+.topNav div a {
+    color: white;
+    vertical-align: middle;
+    margin: auto;
+    display: table-cell;
+}
+.topNav .link a {
+    padding-left: 40px;
+}
+.topNav .link a:hover {
+    color: rgba(255, 255, 255, 0.85);
+}
+.topNav .link a:first-child {
+    padding-left: 0;
+}
+.topNav .social a {
+    padding-left: 30px;
+}
+/*-------- Nav --------*/
+
+
+label {
+    /* margin: 0 40px 0 0; */
+    font-size: 26px;
+    line-height: 70px;
+    display: none;
+    width: 26px;
+    /* float: right; */
+}
+#toggle {
+    display: none;
+}
+
+
+.nav {
+    width: 80%;
+    margin: auto;
+    height: 145px;
+    display: table;
+}
+.nav > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+.nav .logo img {
+    width:100%;
+    max-width: 396px;
+}
+.nav .menu {
+    text-align: right;
+    width:70%;
+}
+.nav .menu ul {
+    list-style: none;
+    display: inline-block;
+}
+.nav .menu ul li {
+    display: inline-block;
+    padding-left: 35px;
+}
+.nav .menu ul li:first-child {
+    padding-left: 0;
+}
+.nav .menu a {
+    color: #F37322;
+    padding:5px;
+}
+
+.nav .menu a.active {
+    background-color: #F37322;
+    color:white;
+}
+
+.nav .menu a:hover {
+    color: black;
+}
+
+.nav .menu a.active:hover {
+    color: white;
+}
+
+.bigPicture {
+    width: 100%;
+    
+    height: 525px;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+.pageLabel {
+    width: 80%;
+    margin: auto;
+    text-align: right;
+}
+.content {
+    width: 80%;
+    margin: auto;
+    margin-top: 90px;
+    font-size: 0;
+}
+
+.content a{
+   color:#F37322;
+}
+.content > div {
+    display: inline-block;
+    width: calc(50% - 25px);
+    vertical-align: top;
+    font-size: 1rem;
+    margin-bottom:35px;
+}
+
+.colonneUn {
+    margin-right:50px;
+}
+
+body.ts .colonneUn strong {
+    color:#d6178b;
+    font-weight:400
+}
+
+.colonneUn img, .colonneDeux img {
+    width:100%;
+    height:auto;
+}
+
+.colonneDeux {    
+    text-align: center;    
+}
+
+.colonneDeux.logos {
+    text-align: right;
+}
+
+.colonneDeux.logos img {
+    width:initial;
+}
+
+.colonneDeux.texte {
+    text-align: left;
+}
+
+
+
+
+/*-------- Mosaique --------*/
+
+
+.mosaique {
+    width: 100% !important;
+    font-size: 0 !important;
+}
+
+.portfolio {
+    
+}
+
+.cover {
+    
+    height: 550px;
+    background-position: 50% 50%;
+    background-size: cover;
+    width: calc(50% - 10px);
+    display: inline-table;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.portfolio .cover {
+   height:250px; 
+}
+
+.traitementDeStar {
+    margin:0 0 35px 0;
+}
+
+.traitementDeStar .cover {  
+    height: 250px;   
+    width: calc(20% - 16px);
+    display: inline-table;
+    margin-right: 20px;
+    margin-bottom: 0; 
+}
+
+.traitementDeStar .cover:nth-child(2n + 2) {
+    margin-right: 20px;
+}
+
+.traitementDeStar .cover:last-child {
+    margin-right: 0;
+}
+
+
+.cover:nth-child(2n+1) {      
+    /*-------- Animation --------*/
+    animation-duration:1s;
+    
+     
+    
+}
+
+.cover:nth-child(2n+2) {      
+    /*-------- Animation --------*/
+    animation-duration:1.2s;
+    
+     
+    
+}
+
+
+.cover:nth-child(2n + 2) {
+    margin-right: 0;
+}
+.cover a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    vertical-align: middle;
+    font-size: 0;
+}
+.cover .title {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    position: relative;
+}
+.cover .title h3 {
+    color: white;
+    text-transform: lowercase;
+    font-size: 30px;
+    width: 85%;
+    background-color: rgba(51, 91, 167, 0.25);
+    padding: 25px 5px;
+    margin: auto;
+}
+.cover .title h3:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+/*-------- Portrait corporatif --------*/
+.tarifs {
+    width:calc(100% - 30px);
+    background-color:#F37322;
+    color:white;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+.tarifs h4 {
+    font-size:20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom:15px;
+}
+
+.tarifs p:last-child {
+    font-weight: 700;
+}
+
+.tarifs a {
+    color:white;
+}
+
+.tarifs a:hover {
+    color:rgba(255,255,255,0.75);
+}
+
+
+
+
+
+
+/*-------- TRAITEMENT DE STAR --------*/
+
+.bleuPoudre {
+    width:100%;
+    margin-bottom: 15px;
+    padding:20px 0;
+    background-image:url("/images/arriere-plan-tarifs-traitement-de-star.png");
+    background-position: bottom;
+    background-repeat:repeat-x;
+}
+
+.forfaitContainer {
+    width: 60%;
+    margin:auto;
+    font-size:0;
+}
+
+.forfaitContainer > div {
+    width:calc(33.333333% - 53.33333px);
+    margin-right:80px;
+    display:inline-block;
+    font-size:1rem;
+   
+    
+}
+
+.forfaitContainer > div img {
+    width:100%;
+    height:auto;
+}
+
+.forfaitContainer >div:last-child {
+    margin-right:0;
+}
+
+
+
+/*-------- Work 01 --------*/
+/*-------- Work 02 --------*/
+/*-------- Work 01 and 02 --------*/
+/*-------- Footer --------*/
+footer {
+    width: 100%;
+    background-color: #F37322;
+    color: white;
+    height: 120px;
+}
+
+
+
+.footer {
+    width: 80%;
+    margin: 0 auto;
+    display: table;
+    height: 100%;
+}
+.footer > div {
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle;
+}
+.footer .copyright {
+    font-weight: 300;
+}
+
+.footer .copyright a{
+    color:white;
+}
+.footer .social {
+    text-align: right;
+}
+.footer .social a {
+    padding-left: 30px;
+}

@@ -42,7 +42,7 @@ $descriptionPage = 'Photographe professionnel passionné depuis plus de ' . ( da
         <div class="bigPicture"  style="background-image: url(/images/entete/photographe-hotel.png);">
             <div class="pageLabel">
                 <h1>Photographe<br>
-                Professionnel....</h1>
+                Professionnel</h1>
             </div>
         </div>
 

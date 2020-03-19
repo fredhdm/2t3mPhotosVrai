@@ -49,7 +49,7 @@ $descriptionPage = 'Photographe professionnel passionné depuis plus de ' . ( da
         <section>
             <div class="content">
                 <div class="colonneUn">
-                    <h2>Studio de photographies.</h2>
+                    <h2>Studio de photographies</h2>
                     <p>
                         <?php echo($descriptionPage) ?>
                     </p>

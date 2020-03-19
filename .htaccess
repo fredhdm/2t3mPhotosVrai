@@ -62,7 +62,7 @@ RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 RewriteRule ^(.*)index.php$ /fr/$1 [R=301,L] 
 
-#REMETTRE Obliger les www.
+#REMETTRE Obliger les www..
 
 #REMETTRE
 # First rewrite to HTTPS:

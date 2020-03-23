@@ -98,28 +98,28 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-RewriteRule ^fr/([^\.]+)/([^\.]+)/([^\.]+)/([^\.]+)/([^\.]+)$ /$1-$2-$3-$4-$5.php [NC,L]
+RewriteRule ^/fr/([^\.]+)/([^\.]+)/([^\.]+)/([^\.]+)/([^\.]+)$ /$1-$2-$3-$4-$5.php [NC,L]
 
 #Récriture des répertoires (4)
 RewriteCond %{REQUEST_FILENAME} !-f 
 RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-RewriteRule ^fr/([^\.]+)/([^\.]+)/([^\.]+)/([^\.]+)$ /$1-$2-$3-$4.php [NC,L]
+RewriteRule ^/fr/([^\.]+)/([^\.]+)/([^\.]+)/([^\.]+)$ /$1-$2-$3-$4.php [NC,L]
 
 #Récriture des répertoires (3)
 RewriteCond %{REQUEST_FILENAME} !-f 
 RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-RewriteRule ^fr/([^\.]+)/([^\.]+)/([^\.]+)$ /$1-$2-$3.php [NC,L]
+RewriteRule ^/fr/([^\.]+)/([^\.]+)/([^\.]+)$ /$1-$2-$3.php [NC,L]
 
 #Récriture des répertoires (2)
 RewriteCond %{REQUEST_FILENAME} !-f 
 RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-RewriteRule ^fr/([^\.]+)/([^\.]+)$ /$1-$2.php [NC,L]
+RewriteRule ^/fr/([^\.]+)/([^\.]+)$ /$1-$2.php [NC,L]
 
 #Retirer l'extension du URL
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -127,7 +127,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-RewriteRule ^fr/([^\.]+)$ $1.php [NC,L]
+RewriteRule ^/fr/([^\.]+)$ $1.php [NC,L]
 
 #Récriture des répertoires (5)
 RewriteCond %{REQUEST_FILENAME} !-f 
